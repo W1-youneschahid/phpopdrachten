@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="e93862f2-b3d9-435a-9aa7-5287f32fb31d" name="php" url="http://localhost/phpopdrachten">
+        <fileTransfer port="0" mountedRoot="C:\inetpub\wwwroot\phpopdrachten" accessType="MOUNT" />
+      </webServer>
+    </option>
+  </component>
+</project>

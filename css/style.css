@@ -1,0 +1,38 @@
+body
+{
+    margin: 0;
+    padding: 0;
+}
+header
+{
+    background-color: #F0F8FF;
+}
+html
+{
+    background-color: #F5F5DC;
+}
+h1
+{
+    text-align: right;
+    background-color: #F0F8FF;
+
+}
+section
+{
+    background-color: #F5F5DC;
+    float: left;
+    width: 40%;
+}
+main
+{
+    float: right;
+    width: 60%;
+}
+#Footer
+{
+    text-align: right;
+    background-color: yellowgreen;
+    margin-top: 650px;
+    margin-left: 890px;
+    position: absolute ;
+}

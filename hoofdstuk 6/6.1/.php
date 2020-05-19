@@ -1,7 +1,13 @@
-
+<!--
+ User: younes chahid
+ Date: 13-02-2020
+ Time: 17:34
+ File: .php
+-->
+<html>
 <head>
     <title></title>
-    <link href="../css/style.css" type="text/css" rel="stylesheet">
+    <link href="../../CSS/style.css" type="text/css" rel="stylesheet">
 </head>
 <body>
 <header>
@@ -55,53 +61,47 @@
     </section>
 </aside>
 <main>
+    <h2 id="uitwerking">Uitwerkingen</h2>
     <?php
+    $message = "";
+    $aUsers = array ('Younes' => '1234', 'Chahid' => '456');
 
-try //de code in het try block is de enige code die wordt uitgevoerd
-    // als deze code succesvol wordt uitgevoerd
-{
-    $pdo = new PDO("odbc:odbc2sqlserver");
-    echo"database connectie gelukt";
-} // de code in het catch blok wordt alleen uitgevoerd als er een fout
-    // optreedt in de code in het try block
-catch (PDOException $e) {
-    echo "<h1>Database error:</h1>";
-    echo $e->getMessage();
-    die();
-}
-// Het resultaat van bovenstaande code is dat ik een variabele $pdo heb
-// van het type object, waarmee ik een query kan uitvoeren op de database
+    if (isset($_GET['submit'])) {
+//controleren ingevulde username en wachtwoord
+        if ( $aUsers[ $_GET['username'] ]  == $_GET['password'] )  {
+            //$message = "login ok";
+            session_start();
+            $_SESSION['username'] = $_GET['username'];
+            header('location: welcome.php');
+        }   else {
+            $message = "Verkeerde gebruikersnaam en wachtwoord combinatie";
+        }
+    }
 
+    echo "<h2>Login formulier</h2>";
 
-
-// $sql is de sql statement die ik wil uitvoeren op de database,
-// en aangezien $pdo de connectie-handler is (het object dat de connectie
-// vasthoudt)moet ik de query wel op die manier uitvoeren
-$sql = 'SELECT * FROM joke';
-$result = $pdo->query($sql);
-// Maar hoe krijg ik nu alle grappen binnen????
-// Ik zie links van het = teken de variabele $result, zou hierin dan alle
-// grappen zitten?
-
-?>
-
+    echo
+    "<form method='get' action='opdracht61.php'>
     <table>
-        <th>ID</th>
-        <th>Joketext</th>
-        <th>Jokeclue</th>
-        <th>Jokedate</th>
-
-<?php
-while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
-    // omdat row een associatieve array is kan ik de waardes als associaties
-    // uit de rij halen, dus:
-    echo "<tr><td>" . $row["id"] . "</td><td>" . $row["joketext"] . "</td><td>" . $row["jokeclou"] . "</td><td>" . $row["jokedate"] . "</td></tr>";
-}
-?>
+        <tr>
+            <td><label>Username</label></td>
+            <td><input type='text' name='username'></td>
+        </tr>
+        <tr>
+            <td><label>Password</label></td>
+            <td><input type='password' name='password'></td>
+        </tr>
+        <tr>
+            <td><input type='submit' name='submit' value='login' class='btn'></td>
+            <td id='message'></td>
+        </tr>
     </table>
+    ";
+    ?>
+
+
 </main>
 
 </body>
 </html>
-
 
